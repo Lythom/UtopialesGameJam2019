@@ -20,9 +20,6 @@ namespace Essaim {
 
         void Update() {
             transform.Translate(0, 0, Time.deltaTime * speed);
-            var pos = transform.position;
-            transform.parent.position = pos;
-            transform.position = pos;
             Vector3 vcenter = Vector3.zero;
             Vector3 vavoid = Vector3.zero;
             foreach (FishBehaviour fish in group.all) {
