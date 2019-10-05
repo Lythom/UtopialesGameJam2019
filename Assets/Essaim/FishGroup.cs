@@ -32,7 +32,9 @@ namespace Essaim {
             all = new FishBehaviour[initializedCount];
             for (int i = 0; i < initializedCount; i++) {
                 GameObject go = GameObject.Instantiate(prefab, this.transform);
-                go.transform.position = path.nodes[0] + initializedCount * 0.02f * Random.insideUnitSphere;
+                var pos = path.nodes[0] + initializedCount * 0.02f * Random.insideUnitSphere;
+                pos.z = this.transform.position.z;
+                go.transform.position = pos;
                 FishBehaviour fb = go.transform.GetChild(0).gameObject.AddComponent<FishBehaviour>();
                 fb.group = this;
                 all[i] = fb;
@@ -41,6 +43,7 @@ namespace Essaim {
 
         void Update() {
             Vector3 nextPoint = path.nodes[nextPathPoint];
+            nextPoint.z = this.transform.position.z;
             float distanceToNextPoint = Vector3.Distance(target.transform.position, nextPoint);
             if (distanceToNextPoint < minSpeed * Time.deltaTime) {
                 nextPathPoint = (nextPathPoint + 1) % path.nodes.Count;
