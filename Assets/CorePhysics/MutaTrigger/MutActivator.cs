@@ -8,8 +8,9 @@ public class MutActivator : MonoBehaviour
 {
     private bool activated = false;
     public GameObject despawnEffect;
-    
-    public float leavingSpeed = 0.002f;
+
+    public float despawnDuration = 1.0f;
+    private float exitTime = -1;
     private static bool hasToMove = false;
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,23 +23,23 @@ public class MutActivator : MonoBehaviour
 
     void Update()
     {
-        if (hasToMove)
+        if (exitTime != -1)
         {
             MoveAway();
+            if (Time.time > exitTime)
+                Destroy(gameObject);
         }
-        if (transform.position.z <= -2.0f)
-            Destroy(gameObject);
     }
 
     public void SetMoving()
     {
-        hasToMove = true;
-        Instantiate(despawnEffect, transform.position, transform.rotation);
+        exitTime = Time.time + despawnDuration;
+        Instantiate(despawnEffect, transform.position, transform.rotation, transform);
     }
 
     void MoveAway()
     {
-        transform.Translate(0, 0, -leavingSpeed);
+        transform.Translate(0, 0, (-2 / despawnDuration) * Time.deltaTime);
     }
 
     void ChangeActivationStatus(GameObject player)
