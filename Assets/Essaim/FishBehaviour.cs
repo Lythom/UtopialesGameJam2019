@@ -27,7 +27,7 @@ namespace Essaim {
                     nDistance = Vector3.Distance(fish.transform.position, this.transform.position);
                     vcenter += fish.transform.position;
 
-                    if (nDistance < 1.0f) {
+                    if (nDistance < @group.avoidDistance) {
                         vavoid = vavoid + (this.transform.position - fish.transform.position);
                     }
 
