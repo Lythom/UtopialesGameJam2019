@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fishball : MonoBehaviour {
+    public Camera camera;
     public Rigidbody2D ball;
     public Rigidbody2D hook;
     public float grabLength = 1f;
@@ -14,22 +15,24 @@ public class Fishball : MonoBehaviour {
     void Start() {
         if (ball == null) throw new Exception("ball is required");
         if (hook == null) throw new Exception("hook is required");
+        if (camera == null) throw new Exception("camera is required");
         hookL = hook.transform.GetComponent<HookLogic>();
         hook.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (Input.GetMouseButtonDown(0)) {
             var mousePos = Input.mousePosition;
-            mousePos.z = Camera.main.transform.position.z - 0.5f;
-            LaunchHook(Camera.main.ScreenToWorldPoint(mousePos));
+            mousePos.z = camera.transform.position.z - 0.5f;
+            LaunchHook(camera.ScreenToWorldPoint(mousePos));
         }
 
         if (!Input.GetMouseButton(0) || (hookL.fish == null && Vector2.Distance(ball.position, hook.position) > grabLength)) {
             hookL.Release();
             hook.gameObject.SetActive(false);
         }
+        ball.rotation = Vector2.SignedAngle(ball.velocity * new Vector2(1, -1), Vector2.up);
     }
 
     private void LaunchHook(Vector2 targetPosition) {

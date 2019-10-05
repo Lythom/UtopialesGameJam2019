@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d3dfe0fac8cb7804292c169adc8ab224, type: 2}
+  - {fileID: 2100000, guid: 80bf608f81ff47340a45bb65d2fcae54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8676848343479825315}
   m_Layer: 0
-  m_Name: Kicker3D (1)
+  m_Name: Kicker3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ Transform:
   m_GameObject: {fileID: 8676848343479825312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 8676848342766509897}
   - {fileID: 8676848343211626464}
