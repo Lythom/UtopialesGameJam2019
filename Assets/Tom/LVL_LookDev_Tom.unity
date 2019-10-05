@@ -558,37 +558,37 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.5779104
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.41
+      value: 210.69078
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.71
+      value: 196.41147
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.0024697206
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8433915
+      value: 0.9030254
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.53729963
+      value: -0.4295493
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.0051456545
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3e905e2131f3bd84798199c2b68e7d9f,
         type: 3}
@@ -609,6 +609,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -550433918539526749, guid: 3e905e2131f3bd84798199c2b68e7d9f,
+        type: 3}
+      propertyPath: m_FocalLength
+      value: 13.327323
+      objectReference: {fileID: 0}
+    - target: {fileID: -550433918539526749, guid: 3e905e2131f3bd84798199c2b68e7d9f,
+        type: 3}
+      propertyPath: field of view
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: -550433918539526749, guid: 3e905e2131f3bd84798199c2b68e7d9f,
+        type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e905e2131f3bd84798199c2b68e7d9f, type: 3}
