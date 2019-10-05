@@ -74,12 +74,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - {x: -2.4779656, y: -5.211774, z: 1}
-  - {x: -1.2347412, y: -2.8363037, z: 1}
-  - {x: 1.3807373, y: -2.8363037, z: 1}
-  - {x: 2.8610196, y: -5.1930285, z: 1}
-  - {x: 1.7411582, y: -7.527127, z: 1}
-  - {x: -1.3756523, y: -7.527127, z: 1}
+  - {x: -3.220459, y: -4.248047, z: 1.0039062}
+  - {x: -1.0511475, y: -1.6501465, z: 1.046875}
+  - {x: 2.527832, y: -1.6501465, z: 1.0742188}
+  - {x: 4.19458, y: -4.970093, z: 1.046875}
+  - {x: 2.7052002, y: -7.8967285, z: 1.0039062}
+  - {x: -1.855957, y: -7.8967285, z: 0.94140625}
 --- !u!1 &1004169471446291611
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,12 +124,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 1004169471130277071}
+  targetSpeedRatio: 1.3
   target: {fileID: 1004169470572562972}
   prefab: {fileID: 351599171811423496, guid: 3cd7078f67694da4a8250d02c4e4c6f1, type: 3}
   neighbourDistance: 10
   avoidDistance: 0.2
   rotationSpeed: 4
-  minSpeed: 2
+  minSpeed: 3
   maxSpeed: 5
   count: 50
   all: []

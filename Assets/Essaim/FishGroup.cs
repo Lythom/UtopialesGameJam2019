@@ -33,7 +33,7 @@ namespace Essaim {
             for (int i = 0; i < initializedCount; i++) {
                 GameObject go = GameObject.Instantiate(prefab, this.transform);
                 go.transform.position = path.nodes[0] + initializedCount * 0.02f * Random.insideUnitSphere;
-                FishBehaviour fb = go.AddComponent<FishBehaviour>();
+                FishBehaviour fb = go.transform.GetChild(0).gameObject.AddComponent<FishBehaviour>();
                 fb.group = this;
                 all[i] = fb;
             }
