@@ -124,14 +124,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 1004169471130277071}
-  targetSpeedRatio: 1.3
+  targetSpeedRatio: 1.1
   target: {fileID: 1004169470572562972}
   prefab: {fileID: 351599171811423496, guid: 3cd7078f67694da4a8250d02c4e4c6f1, type: 3}
   neighbourDistance: 10
   avoidDistance: 0.2
   rotationSpeed: 4
-  minSpeed: 3
-  maxSpeed: 5
+  minSpeed: 4
+  maxSpeed: 6
   count: 50
   all: []
 --- !u!1 &1004169471626708149
