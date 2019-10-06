@@ -128,7 +128,7 @@ MonoBehaviour:
   target: {fileID: 1004169470572562972}
   prefab: {fileID: 351599171811423496, guid: 396efe2de1a85714fba5e22372d2f327, type: 3}
   neighbourDistance: 10
-  avoidDistance: 0.3
+  avoidDistance: 0.4
   rotationSpeed: 4
   minSpeed: 4
   maxSpeed: 6

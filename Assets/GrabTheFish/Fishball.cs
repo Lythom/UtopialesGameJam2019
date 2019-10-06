@@ -6,6 +6,7 @@ using UnityEngine;
 public class Fishball : MonoBehaviour {
     public Camera camera;
     public Rigidbody2D ball;
+    public Transform ball3D;
     public Rigidbody2D hook;
     public float grabLength = 1f;
     public float grabSpeed = 10f;
@@ -32,7 +33,8 @@ public class Fishball : MonoBehaviour {
             hookL.Release();
             hook.gameObject.SetActive(false);
         }
-        ball.rotation = Vector2.SignedAngle(ball.velocity * new Vector2(1, -1), Vector2.up);
+        ball3D.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(ball.velocity * new Vector2(1, -1), Vector2.up));
+        ball3D.position = ball.transform.position;
     }
 
     private void LaunchHook(Vector2 targetPosition) {
@@ -40,7 +42,7 @@ public class Fishball : MonoBehaviour {
         var ballPos = ball.transform.position;
         Vector2 angle = (targetPosition - (Vector2) ballPos).normalized;
         hook.velocity = ball.velocity + angle * grabSpeed;
-        hook.transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(angle, Vector2.up));
+        hook.rotation = Vector2.SignedAngle(-hook.velocity * new Vector2(1, -1), Vector2.up);
         hook.position = ballPos;
     }
 }
