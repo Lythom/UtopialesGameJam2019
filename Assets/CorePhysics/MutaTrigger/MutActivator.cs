@@ -12,34 +12,35 @@ public class MutActivator : MonoBehaviour
     public float despawnDuration = 1.0f;
     private float exitTime = -1;
     private static bool hasToMove = false;
-    void OnTriggerEnter2D(Collider2D other)
+    
+    void OnCollisionEnter2D(Collision2D other)
     {
         GetComponent<Light>().intensity = 2;
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            ChangeActivationStatus(other.gameObject);
+            ChangeActivationStatus(other.gameObject.transform.parent.gameObject);
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (exitTime != -1)
         {
             MoveAway();
             if (Time.time > exitTime)
-                Destroy(gameObject);
+                Destroy(transform.parent.gameObject);
         }
     }
 
     public void SetMoving()
     {
         exitTime = Time.time + despawnDuration;
-        Instantiate(despawnEffect, transform.position, transform.rotation, transform);
+        Instantiate(despawnEffect, transform.position + Vector3.forward, transform.rotation, transform);
     }
 
     void MoveAway()
     {
-        transform.Translate(0, 0, (-2 / despawnDuration) * Time.deltaTime);
+        transform.parent.Translate(0, 0, (-1 / despawnDuration) * Time.deltaTime);
     }
 
     void ChangeActivationStatus(GameObject player)

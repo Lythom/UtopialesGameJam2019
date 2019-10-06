@@ -7,13 +7,15 @@ using UnityEngine;
 
 public class MutablePlayer : MonoBehaviour
 {
-    private bool wallBreaker = false;
+
+    public GameObject isWallBreakerOn = null;
     private float sizeMultiplier = 0.0f;
 
     public int WALL_BREAKER_TYPE = 1;
     int wallBreakerActivatorsNumber;
     private int wallBreakerActivatorsTriggered = 0;
     private static bool sizeActivatorStatus = false;
+    public bool wallBreaker => isWallBreakerOn != null;
 
     //Start
     void Start()
@@ -34,7 +36,7 @@ public class MutablePlayer : MonoBehaviour
         if (wallBreakerActivatorsNumber == wallBreakerActivatorsTriggered)
         {
             //TODO Launch animation or sound effect meaning "you can break fragile walls"
-            wallBreaker = true;
+            isWallBreakerOn.SetActive(true);
             GameObject[] activators = GameObject.FindGameObjectsWithTag("WallBreakerActivator");
             foreach (var entity in activators)
             {
@@ -42,6 +44,9 @@ public class MutablePlayer : MonoBehaviour
             }
         }
     }
-    
-    
+
+
+    public void DisableWallBreaker() {
+        isWallBreakerOn.SetActive(false);
+    }
 }
