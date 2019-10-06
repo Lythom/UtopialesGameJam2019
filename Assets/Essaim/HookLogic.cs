@@ -19,11 +19,6 @@ public class HookLogic : MonoBehaviour {
         Hook(other1.rigidbody);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        Hook(other.attachedRigidbody);
-    }
-
-
     private void FixedUpdate() {
         var pos = transform.position;
         if (fish != null) {
