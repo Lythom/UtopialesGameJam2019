@@ -15,7 +15,7 @@ public class MutablePlayer : MonoBehaviour
     int wallBreakerActivatorsNumber;
     private int wallBreakerActivatorsTriggered = 0;
     private static bool sizeActivatorStatus = false;
-    public bool wallBreaker => isWallBreakerOn != null;
+    public bool wallBreaker => isWallBreakerOn != null && isWallBreakerOn.activeSelf;
 
     //Start
     void Start()
