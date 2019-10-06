@@ -20,11 +20,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _GlitchTex:
-        m_Texture: {fileID: 2800000, guid: 6bd626aa489c3044f9631217c45cd000, type: 3}
+        m_Texture: {fileID: 2800000, guid: eae47ffbb6d4ebf49a147a75757eb6e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 58bae027c5e78054892c13e328e0a19b, type: 3}
+        m_Texture: {fileID: 2800000, guid: a25e0ab379c5010428659454e31224d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
