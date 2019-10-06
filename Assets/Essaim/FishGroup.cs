@@ -41,7 +41,7 @@ namespace Essaim {
             }
         }
 
-        void Update() {
+        void FixedUpdate() {
             Vector3 nextPoint = path.nodes[nextPathPoint];
             nextPoint.z = this.transform.position.z;
             float distanceToNextPoint = Vector3.Distance(target.transform.position, nextPoint);

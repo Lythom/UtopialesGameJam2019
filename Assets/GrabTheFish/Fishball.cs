@@ -23,16 +23,17 @@ public class Fishball : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+        if (!Input.GetMouseButton(0) || (hookL.fish == null && Vector2.Distance(ball.position, hook.position) > grabLength)) {
+            hookL.Release();
+            hook.gameObject.SetActive(false);
+        }
+        
         if (Input.GetMouseButtonDown(0)) {
             var mousePos = Input.mousePosition;
             mousePos.z = camera.transform.position.z - 0.5f;
             LaunchHook(camera.ScreenToWorldPoint(mousePos));
         }
 
-        if (!Input.GetMouseButton(0) || (hookL.fish == null && Vector2.Distance(ball.position, hook.position) > grabLength)) {
-            hookL.Release();
-            hook.gameObject.SetActive(false);
-        }
         ball3D.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(ball.velocity * new Vector2(1, -1), Vector2.up));
         ball3D.position = ball.transform.position;
     }

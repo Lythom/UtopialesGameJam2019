@@ -9,7 +9,11 @@ public class HookLogic : MonoBehaviour {
     private HingeJoint2D hingeJoint2D;
 
     public Transform hookTail;
+    private Rigidbody2D body;
 
+    private void Start() {
+        body = this.GetComponent<Rigidbody2D>();
+    }
 
     private void OnCollisionEnter2D(Collision2D other1) {
         Hook(other1.rigidbody);
@@ -21,7 +25,16 @@ public class HookLogic : MonoBehaviour {
 
 
     private void FixedUpdate() {
-        if (fish != null) this.transform.position = fish.position;
+        var pos = transform.position;
+        if (fish != null) {
+            body.MovePosition(fish.position);
+            pos.z = fish.transform.position.z;
+        } else {
+            pos.z = ball.transform.position.z;
+        }
+        transform.position = pos;
+   
+        
         if (hookTail != null && hookTail.gameObject.activeSelf) {
             var scale = hookTail.localScale;
             var position = transform.position;
@@ -34,9 +47,10 @@ public class HookLogic : MonoBehaviour {
         if (fish == null) {
             fish = body;
             hingeJoint2D = fish.gameObject.AddComponent<HingeJoint2D>();
-            hingeJoint2D.autoConfigureConnectedAnchor = true;
+            hingeJoint2D.autoConfigureConnectedAnchor = false;
             hingeJoint2D.connectedBody = ball;
             hingeJoint2D.anchor = Vector2.zero;
+            hingeJoint2D.connectedAnchor = (fish.position - ball.position).normalized * 3f;
         }
     }
 

@@ -18,7 +18,7 @@ namespace Essaim {
             speed = Random.Range(group.minSpeed, group.maxSpeed);
         }
 
-        void Update() {
+        void FixedUpdate() {
             transform.Translate(0, 0, Time.deltaTime * speed);
             Vector3 vcenter = Vector3.zero;
             Vector3 vavoid = Vector3.zero;
