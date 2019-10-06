@@ -8,6 +8,9 @@ public class HookLogic : MonoBehaviour {
     [HideInInspector] public Rigidbody2D fish;
     private HingeJoint2D hingeJoint2D;
 
+    public Transform hookTail;
+
+
     private void OnCollisionEnter2D(Collision2D other1) {
         Hook(other1.rigidbody);
     }
@@ -19,6 +22,12 @@ public class HookLogic : MonoBehaviour {
 
     private void FixedUpdate() {
         if (fish != null) this.transform.position = fish.position;
+        if (hookTail != null && hookTail.gameObject.activeSelf) {
+            var scale = hookTail.localScale;
+            var position = transform.position;
+            scale.y = Vector2.Distance(ball.position, position) * 2.4f;
+            hookTail.localScale = scale;
+        }
     }
 
     public void Hook(Rigidbody2D body) {
