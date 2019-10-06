@@ -16,7 +16,7 @@ public class AudioBehaviourOnCollide : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnCollisionEnter2D()
+    void OnTriggerEnter2D(Collider2D other)
     {
         launchHookAudioSource.Play();
     }
