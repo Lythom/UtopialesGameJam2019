@@ -9,6 +9,7 @@ public class HookLogic : MonoBehaviour {
     [HideInInspector] public FishBehaviour fish;
     private SpringJoint2D joint2D;
     public AudioSource grabSound;
+    public LineRenderer line;
 
 
     public Transform hookTail;
@@ -22,6 +23,12 @@ public class HookLogic : MonoBehaviour {
         Hook(other1.rigidbody);
     }
 
+    void Update() {
+        line.SetPosition(0, transform.position);
+        line.SetPosition(1, ball.gameObject.transform.position);
+        line.enabled = true;
+    }
+
     private void FixedUpdate() {
         if (hookTail != null && hookTail.gameObject.activeSelf) {
             var scale = hookTail.localScale;
@@ -32,7 +39,7 @@ public class HookLogic : MonoBehaviour {
 
         bool hooked = fish != null;
         if (hooked) {
-            if(joint2D != null) joint2D.connectedAnchor = fish.vcenter;
+            if (joint2D != null) joint2D.connectedAnchor = fish.vcenter;
             body.MovePosition(fish.vcenter);
         }
     }
@@ -55,5 +62,6 @@ public class HookLogic : MonoBehaviour {
         fish = null;
         if (joint2D != null) Destroy(joint2D);
         joint2D = null;
+        line.enabled = false;
     }
 }
