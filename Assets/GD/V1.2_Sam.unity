@@ -4719,7 +4719,7 @@ PrefabInstance:
     - target: {fileID: 3313454725195124829, guid: cc4f9631789f8e2488f4e4762129fe38,
         type: 3}
       propertyPath: m_Shadows.m_Strength
-      value: 0.423
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3313454725195124829, guid: cc4f9631789f8e2488f4e4762129fe38,
         type: 3}
@@ -4755,6 +4755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Shadows.m_Resolution
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313454725195124829, guid: cc4f9631789f8e2488f4e4762129fe38,
+        type: 3}
+      propertyPath: m_Shadows.m_NearPlane
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc4f9631789f8e2488f4e4762129fe38, type: 3}
@@ -5860,6 +5865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 36.44802
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085277744907290906, guid: 7da0a55713dbd2b4ca5bb56eb1a507e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da0a55713dbd2b4ca5bb56eb1a507e9, type: 3}
