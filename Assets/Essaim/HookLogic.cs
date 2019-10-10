@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Essaim;
 using UnityEngine;
 
 public class HookLogic : MonoBehaviour {
     public Rigidbody2D ball;
-    [HideInInspector] public Rigidbody2D fish;
-    private HingeJoint2D hingeJoint2D;
+    [HideInInspector] public FishBehaviour fish;
+    private SpringJoint2D joint2D;
+    public AudioSource grabSound;
+
 
     public Transform hookTail;
     private Rigidbody2D body;
@@ -20,38 +23,37 @@ public class HookLogic : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        var pos = transform.position;
-        if (fish != null) {
-            body.MovePosition(fish.position);
-            pos.z = fish.transform.position.z;
-        } else {
-            pos.z = ball.transform.position.z;
-        }
-        transform.position = pos;
-   
-        
         if (hookTail != null && hookTail.gameObject.activeSelf) {
             var scale = hookTail.localScale;
             var position = transform.position;
             scale.y = Vector2.Distance(ball.position, position) * 2.4f;
             hookTail.localScale = scale;
         }
+
+        bool hooked = fish != null;
+        if (hooked) {
+            if(joint2D != null) joint2D.connectedAnchor = fish.vcenter;
+            body.MovePosition(fish.vcenter);
+        }
     }
 
     public void Hook(Rigidbody2D body) {
-        if (fish == null) {
-            fish = body;
-            hingeJoint2D = fish.gameObject.AddComponent<HingeJoint2D>();
-            hingeJoint2D.autoConfigureConnectedAnchor = false;
-            hingeJoint2D.connectedBody = ball;
-            hingeJoint2D.anchor = Vector2.zero;
-            hingeJoint2D.connectedAnchor = (fish.position - ball.position).normalized * 3f;
+        if (fish == null && joint2D == null) {
+            grabSound.Play();
+            fish = body.transform.parent.GetComponentInChildren<FishBehaviour>();
+            joint2D = ball.gameObject.AddComponent<SpringJoint2D>();
+            joint2D.autoConfigureDistance = false;
+            joint2D.distance = 2.5f;
+            joint2D.anchor = Vector2.zero;
+            joint2D.dampingRatio = 1;
+            joint2D.frequency = 10;
+            joint2D.breakForce = Mathf.Infinity;
         }
     }
 
     public void Release() {
         fish = null;
-        if (hingeJoint2D != null) Destroy(hingeJoint2D);
-        hingeJoint2D = null;
+        if (joint2D != null) Destroy(joint2D);
+        joint2D = null;
     }
 }

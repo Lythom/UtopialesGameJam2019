@@ -4,8 +4,8 @@
 Physics2DSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
-  m_Gravity: {x: 0, y: -9.81}
-  m_DefaultMaterial: {fileID: 0}
+  m_Gravity: {x: 0, y: -5}
+  m_DefaultMaterial: {fileID: 6200000, guid: b9c03f17f47bf3e48b0b624c7852a148, type: 2}
   m_VelocityIterations: 8
   m_PositionIterations: 8
   m_VelocityThreshold: 1

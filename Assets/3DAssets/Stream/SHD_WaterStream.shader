@@ -1,4 +1,10 @@
-﻿Shader "Unlit/SHD_WaterStream"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Unlit/SHD_WaterStream"
 {
 	Properties
 	{
@@ -51,23 +57,39 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
+			float randomOffset = unity_ObjectToWorld[0].w*2 + unity_ObjectToWorld[0].x;
 
-				// sample the texture
-				fixed4 mainCol = tex2D(_MainTex, i.uv);
+            // sample the texture
+            float2 pannedMainCoord = float2(
+				i.uv.x + cos(i.uv.y * 10) * 0.08,
+				frac(i.uv.y + _Time.y * 0.4 + randomOffset * 1.2)
+            );
+            fixed4 mainCol = tex2D(_MainTex, pannedMainCoord);
+            float2 pannedMainCoord2 = float2(
+				i.uv.x,
+				frac(i.uv.y + _Time.y * 0.2 + randomOffset * 1.4)
+            );
+            fixed4 mainCol2 = tex2D(_MainTex, pannedMainCoord2);
 
 			// glitch 1
 			float2 pannedTexCoord = float2(
-				i.uv.x,
-				frac(i.uv.y + _Time.y * 0.5)
+				i.uv.x + cos(i.uv.y * 10) * 0.08, // add a cosinus from y to create wavy effet
+				frac(i.uv.y + _Time.y * 0.5 + randomOffset * 1.5)
 				);
 			fixed4 glitchCol = tex2D(_GlitchTex, pannedTexCoord);
+            float2 pannedTexCoord2 = float2(
+				i.uv.x,
+				frac(i.uv.y + _Time.y * 0.8 +  + randomOffset * 1.8)
+				);
+			fixed4 glitchCol2 = tex2D(_GlitchTex, pannedTexCoord2);
 			/*
 			float col.a = mainCol.a * glitchCol.r;
 			*/
 
-
-			mainCol.a = mainCol.a *  glitchCol.r;
-
+            float x = i.uv.y * 2 - 1;
+            float fadeInOut = 1 - x * x * x * x; // this makes an alpha transition when entering and existing
+			mainCol.a = clamp(mainCol.a * glitchCol.r + mainCol2.a * glitchCol2.r, 0, 1) * fadeInOut;
+            mainCol.rgb = max(mainCol.rgb, mainCol2.rgb);
 
 			// apply fog
 			UNITY_APPLY_FOG(i.fogCoord, col);

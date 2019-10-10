@@ -12,8 +12,9 @@ namespace Essaim {
         [Range(0.0f, 10.0f)] public float avoidDistance;
         [Range(0.0f, 5.0f)] public float rotationSpeed;
 
-        [Header("Fish Settings")] 
-        [Range(0.0f, 10.0f)]public float minSpeed;
+        [Header("Fish Settings")] [Range(0.0f, 10.0f)]
+        public float minSpeed;
+
         [Range(0.0f, 10.0f)] public float maxSpeed;
         [Range(1, 300)] public int count = 30;
 
@@ -29,7 +30,7 @@ namespace Essaim {
             all = new FishBehaviour[initializedCount];
             for (int i = 0; i < initializedCount; i++) {
                 GameObject go = GameObject.Instantiate(prefab, this.transform);
-                var pos = path.nodes[0] + initializedCount * 0.02f * Random.insideUnitSphere;
+                var pos = path.nodes[0] + transform.position + initializedCount * 0.02f * Random.insideUnitSphere;
                 pos.z = this.transform.position.z;
                 go.transform.position = pos;
                 FishBehaviour fb = go.transform.GetChild(0).gameObject.AddComponent<FishBehaviour>();
@@ -39,8 +40,9 @@ namespace Essaim {
         }
 
         void FixedUpdate() {
-            Vector3 nextPoint = path.nodes[nextPathPoint];
-            nextPoint.z = this.transform.position.z;
+            var position = transform.position;
+            Vector3 nextPoint = path.nodes[nextPathPoint] + position;
+            nextPoint.z = position.z;
             float distanceToNextPoint = Vector3.Distance(target.transform.position, nextPoint);
             if (distanceToNextPoint < minSpeed * Time.deltaTime) {
                 nextPathPoint = (nextPathPoint + 1) % path.nodes.Count;

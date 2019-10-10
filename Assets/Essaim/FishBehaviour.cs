@@ -7,6 +7,7 @@ namespace Essaim {
         [Range(1.0f, 10.0f)] public float neighbourDistance;
         [Range(0.0f, 5.0f)] public float rotationSpeed;
         public FishGroup group;
+        public Vector3 vcenter;
 
         private float speed;
 
@@ -20,7 +21,7 @@ namespace Essaim {
 
         void FixedUpdate() {
             transform.Translate(0, 0, Time.deltaTime * speed);
-            Vector3 vcenter = Vector3.zero;
+            vcenter = Vector3.zero;
             Vector3 vavoid = Vector3.zero;
             foreach (FishBehaviour fish in group.all) {
                 if (fish != this) {

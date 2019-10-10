@@ -11,7 +11,6 @@ public class MutActivator : MonoBehaviour
 
     public float despawnDuration = 1.0f;
     private float exitTime = -1;
-    private static bool hasToMove = false;
     
     void OnCollisionEnter2D(Collision2D other)
     {

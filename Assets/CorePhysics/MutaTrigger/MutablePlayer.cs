@@ -9,6 +9,7 @@ public class MutablePlayer : MonoBehaviour
 {
 
     public GameObject isWallBreakerOn = null;
+    public AudioSource mutageneSound;
     private float sizeMultiplier = 0.0f;
 
     public int WALL_BREAKER_TYPE = 1;
@@ -20,6 +21,7 @@ public class MutablePlayer : MonoBehaviour
     //Start
     void Start()
     {
+        if (mutageneSound == null) throw new Exception("Please provide mutageneSound");
         wallBreakerActivatorsNumber = GameObject.FindGameObjectsWithTag("WallBreakerActivator").Length;
     }
 
@@ -37,6 +39,7 @@ public class MutablePlayer : MonoBehaviour
         {
             //TODO Launch animation or sound effect meaning "you can break fragile walls"
             isWallBreakerOn.SetActive(true);
+            mutageneSound.Play();
             GameObject[] activators = GameObject.FindGameObjectsWithTag("WallBreakerActivator");
             foreach (var entity in activators)
             {
