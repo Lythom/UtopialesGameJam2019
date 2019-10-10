@@ -23,8 +23,7 @@ public class Fishball : MonoBehaviour {
         hook.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
+    void Update() {
         if (hookL.gameObject.activeSelf && (!Input.GetMouseButton(0) || (hookL.fish == null && Vector2.Distance(ball.position, hook.position) > grabLength))) {
             hookL.Release();
             hook.gameObject.SetActive(false);
@@ -37,7 +36,9 @@ public class Fishball : MonoBehaviour {
             LaunchHook(camera.ScreenToWorldPoint(mousePos));
             Debug.Log("launch");
         }
-
+    }
+    
+    void FixedUpdate() {
         ball3D.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(ball.velocity * new Vector2(1, -1), Vector2.up));
         ball3D.position = ball.transform.position;
     }
