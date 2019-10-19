@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Essaim;
 using UnityEngine;
 
 public class Fishball : MonoBehaviour {
@@ -8,12 +9,14 @@ public class Fishball : MonoBehaviour {
     public Rigidbody2D ball;
     public Transform ball3D;
     public Rigidbody2D hook;
+    public GameObject targetVisual;
     public float grabLength = 1f;
     public float grabSpeed = 10f;
 
     public AudioSource launchSound;
-    
+
     private HookLogic hookL;
+    private FishGroup[] fishGroups;
 
     void Start() {
         if (ball == null) throw new Exception("ball is required");
@@ -21,23 +24,40 @@ public class Fishball : MonoBehaviour {
         if (camera == null) throw new Exception("camera is required");
         hookL = hook.transform.GetComponent<HookLogic>();
         hook.gameObject.SetActive(false);
+        fishGroups = GameObject.FindObjectsOfType<FishGroup>();
     }
 
     void Update() {
         if (hookL.gameObject.activeSelf && (!Input.GetMouseButton(0) || (hookL.fish == null && Vector2.Distance(ball.position, hook.position) > grabLength))) {
             hookL.Release();
             hook.gameObject.SetActive(false);
-            Debug.Log("rewind " + (hookL.fish == null ? "no fish" : "hooked!" + ":") + Vector2.Distance(ball.position, hook.position));
         }
-        
+
+        Vector2 closestGroup = Vector2.zero;
+        float closestDistance = 999999;
+        foreach (FishGroup fishGroup in fishGroups) {
+            if (fishGroup.all.Length > 0) {
+                var groupPos = fishGroup.all[0].vcenter;
+                var dist = Vector2.Distance(groupPos, ball.position);
+                if (dist < closestDistance) {
+                    closestDistance = dist;
+                    closestGroup = groupPos;
+                }
+            }
+        }
+
+        if (closestDistance < grabLength && !hookL.gameObject.activeSelf) {
+            targetVisual.SetActive(true);
+            targetVisual.transform.position = (Vector3) closestGroup + Vector3.forward * 1.5f;
+        } else {
+            targetVisual.SetActive(false);
+        }
+
         if (Input.GetMouseButtonDown(0)) {
-            var mousePos = Input.mousePosition;
-            mousePos.z = camera.transform.position.z - 0.5f;
-            LaunchHook(camera.ScreenToWorldPoint(mousePos));
-            Debug.Log("launch");
+            LaunchHook(closestGroup);
         }
     }
-    
+
     void FixedUpdate() {
         ball3D.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(ball.velocity * new Vector2(1, -1), Vector2.up));
         ball3D.position = ball.transform.position;

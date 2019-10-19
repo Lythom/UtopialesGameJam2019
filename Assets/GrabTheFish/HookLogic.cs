@@ -38,7 +38,7 @@ public class HookLogic : MonoBehaviour {
         bool hooked = fish != null;
         if (hooked) {
             if (joint2D != null) joint2D.connectedAnchor = fish.@group.target.position;
-            body.MovePosition(fish.@group.target.position);
+            body.MovePosition(fish.vcenter);
         }
     }
 
@@ -48,7 +48,7 @@ public class HookLogic : MonoBehaviour {
             fish = body.transform.parent.GetComponentInChildren<FishBehaviour>();
             joint2D = ball.gameObject.AddComponent<SpringJoint2D>();
             joint2D.autoConfigureDistance = false;
-            joint2D.distance = 2f;
+            joint2D.distance = 3.5f;
             joint2D.anchor = Vector2.zero;
             joint2D.dampingRatio = 1;
             joint2D.frequency = 3;
