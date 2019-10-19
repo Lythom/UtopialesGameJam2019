@@ -44,10 +44,12 @@ namespace Essaim {
             Vector3 nextPoint = path.nodes[nextPathPoint] + position;
             nextPoint.z = position.z;
             float distanceToNextPoint = Vector3.Distance(target.transform.position, nextPoint);
-            if (distanceToNextPoint < minSpeed * Time.deltaTime) {
+            if (distanceToNextPoint < maxSpeed * 1.5f * Time.deltaTime) {
                 nextPathPoint = (nextPathPoint + 1) % path.nodes.Count;
             } else {
-                target.transform.position = Vector3.MoveTowards(target.transform.position, nextPoint, maxSpeed * targetSpeedRatio * Time.deltaTime);
+                Quaternion targetLookAt = Quaternion.LookRotation(nextPoint - target.position, Vector3.forward);
+                target.rotation = Quaternion.Lerp(target.rotation, targetLookAt, 0.15f);
+                target.Translate(0, 0, maxSpeed * targetSpeedRatio * Time.deltaTime);
             }
         }
     }

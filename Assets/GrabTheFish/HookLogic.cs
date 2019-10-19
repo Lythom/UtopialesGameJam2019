@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Essaim;
+﻿using Essaim;
 using UnityEngine;
 
 public class HookLogic : MonoBehaviour {
@@ -39,7 +36,7 @@ public class HookLogic : MonoBehaviour {
 
         bool hooked = fish != null;
         if (hooked) {
-            if (joint2D != null) joint2D.connectedAnchor = fish.vcenter;
+            if (joint2D != null) joint2D.connectedAnchor = fish.group.target.position;
             body.MovePosition(fish.vcenter);
         }
     }
