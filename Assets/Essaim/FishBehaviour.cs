@@ -25,8 +25,9 @@ namespace Essaim {
             Vector3 vavoid = Vector3.zero;
             foreach (FishBehaviour fish in group.all) {
                 if (fish != this) {
-                    nDistance = Vector3.Distance(fish.transform.position, this.transform.position);
-                    vcenter += fish.transform.position;
+                    var position = fish.transform.position;
+                    nDistance = Vector3.Distance(position, this.transform.position);
+                    vcenter += position;
 
                     if (nDistance < @group.avoidDistance) {
                         vavoid = vavoid + (this.transform.position - fish.transform.position);

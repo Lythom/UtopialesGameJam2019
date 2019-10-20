@@ -2212,15 +2212,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1054420388353244374, guid: 5ebd0af732f7b94439511618ef8ba0a6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2004365346375856827, guid: 5ebd0af732f7b94439511618ef8ba0a6,
         type: 3}
       propertyPath: m_Name
       value: Fishball
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054420388353244374, guid: 5ebd0af732f7b94439511618ef8ba0a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2004365346375856821, guid: 5ebd0af732f7b94439511618ef8ba0a6,
         type: 3}

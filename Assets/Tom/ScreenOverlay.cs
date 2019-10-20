@@ -23,6 +23,9 @@ namespace UnityStandardAssets.ImageEffects
 
         public Shader overlayShader = null;
         private Material overlayMaterial = null;
+        private static readonly int UvTransform = Shader.PropertyToID("_UV_Transform");
+        private static readonly int Intensity = Shader.PropertyToID("_Intensity");
+        private static readonly int Overlay = Shader.PropertyToID("_Overlay");
 
 
         public override bool CheckResources ()
@@ -60,9 +63,9 @@ namespace UnityStandardAssets.ImageEffects
 			}
 			#endif
 
-            overlayMaterial.SetVector("_UV_Transform", UV_Transform);
-            overlayMaterial.SetFloat ("_Intensity", intensity);
-            overlayMaterial.SetTexture ("_Overlay", texture);
+            overlayMaterial.SetVector(UvTransform, UV_Transform);
+            overlayMaterial.SetFloat (Intensity, intensity);
+            overlayMaterial.SetTexture (Overlay, texture);
             Graphics.Blit (source, destination, overlayMaterial, (int) blendMode);
         }
     }

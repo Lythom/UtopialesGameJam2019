@@ -34,7 +34,8 @@ public class MutActivator : MonoBehaviour
     public void SetMoving()
     {
         exitTime = Time.time + despawnDuration;
-        Instantiate(despawnEffect, transform.position + Vector3.forward, transform.rotation, transform);
+        var transform1 = transform;
+        Instantiate(despawnEffect, transform1.position + Vector3.forward, transform1.rotation, transform1);
     }
 
     void MoveAway()

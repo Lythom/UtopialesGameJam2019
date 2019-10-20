@@ -19,8 +19,9 @@ public class OnTriggerWin : MonoBehaviour {
             var attachedRigidbody = other.attachedRigidbody;
             attachedRigidbody.isKinematic = true;
             attachedRigidbody.velocity = Vector2.zero;
-            var initalPos = camera.transform.position;
-            var initalAngle = camera.transform.eulerAngles;
+            var transform1 = camera.transform;
+            var initalPos = transform1.position;
+            var initalAngle = transform1.eulerAngles;
             particles.SetActive(true);
 
             this.AnimateOverTime01(2, (i) =>

@@ -28,8 +28,9 @@ namespace Scenes.Swarm
                 turning = false;
             if (turning)
             {
-                Vector3 direction = Vector3.zero - transform.position;
-                this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
+                var transform1 = this.transform;
+                Vector3 direction = Vector3.zero - transform1.position;
+                this.transform.rotation = Quaternion.Slerp(transform1.rotation,
                     Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
             }
             else
@@ -74,10 +75,12 @@ namespace Scenes.Swarm
 
             if (groupSize > 0)
             {
-                vCenter = vCenter / groupSize + (goalPos - this.transform.position);
+                var transform1 = transform;
+                var position = transform1.position;
+                vCenter = vCenter / groupSize + (goalPos - position);
                 speed = globalSpeed / groupSize;
 
-                Vector3 direction = (vCenter + vAvoid) - transform.position;
+                Vector3 direction = (vCenter + vAvoid) - position;
 
                 if (direction != Vector3.zero)
                     this.transform.rotation = Quaternion.Slerp(this.transform.rotation,

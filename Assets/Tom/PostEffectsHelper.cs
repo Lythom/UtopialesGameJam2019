@@ -7,6 +7,8 @@ namespace UnityStandardAssets.ImageEffects
     [RequireComponent (typeof(Camera))]
     class PostEffectsHelper : MonoBehaviour
     {
+        private static readonly int MainTex = Shader.PropertyToID("_MainTex");
+
         void OnRenderImage (RenderTexture source, RenderTexture destination)
         {
             Debug.Log("OnRenderImage in Helper called ...");
@@ -21,7 +23,7 @@ namespace UnityStandardAssets.ImageEffects
             // Make the destination texture the target for all rendering
             RenderTexture.active = dest;
             // Assign the source texture to a property from a shader
-            material.SetTexture("_MainTex", source);
+            material.SetTexture(MainTex, source);
             bool  invertY = true; // source.texelSize.y < 0.0f;
             // Set up the simple Matrix
             GL.PushMatrix();
@@ -155,7 +157,7 @@ namespace UnityStandardAssets.ImageEffects
             // Make the destination texture the target for all rendering
             RenderTexture.active = dest;
             // Assign the source texture to a property from a shader
-            material.SetTexture("_MainTex", source);
+            material.SetTexture(MainTex, source);
             bool  invertY = true; // source.texelSize.y < 0.0f;
             // Set up the simple Matrix
             GL.PushMatrix();
