@@ -74,6 +74,7 @@ MonoBehaviour:
   particles: {fileID: 1471325130943078310}
   destinationPos: {x: 0, y: 8.4, z: 5}
   destinationAngle: {x: 310, y: 180, z: 0}
+  targetSceneName: V1.4_lvl1
 --- !u!1 &1471325130496074622
 GameObject:
   m_ObjectHideFlags: 0

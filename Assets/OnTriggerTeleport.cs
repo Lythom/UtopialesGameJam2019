@@ -12,14 +12,11 @@ public class OnTriggerTeleport : MonoBehaviour
     public GameObject particles;
 
     public GameObject gameObjectForDestinationPos;
-    public Vector3 destinationPos;// = new Vector3(12, -3.45f, 5);
-    public Vector3 destinationAngle;// = new Vector3(310, 180, 0);
+    public Vector3 destinationPos = new Vector3(12, -3.45f, 5);
+    public Vector3 destinationAngle = new Vector3(310, 180, 0);
 
     void Start()
     {
-        destinationPos = new Vector3(12, -3.45f, 5);
-        destinationAngle = new Vector3(310, 180, 0);
-        
         if (particles != null)
         {
             particles.SetActive(false);
@@ -29,9 +26,6 @@ public class OnTriggerTeleport : MonoBehaviour
         var gameObjetForDestiantionPosTransform = gameObjectForDestinationPos.transform;
         destinationPos = gameObjetForDestiantionPosTransform.position;
         destinationAngle = gameObjetForDestiantionPosTransform.eulerAngles;
-        Debug.Log(gameObjetForDestiantionPosTransform.position);
-        Debug.Log(gameObjetForDestiantionPosTransform.eulerAngles);
-        Debug.Log(gameObjetForDestiantionPosTransform.localEulerAngles);
     }
 
     void OnTriggerEnter2D(Collider2D other)

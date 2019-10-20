@@ -12,6 +12,7 @@ public class OnTriggerWin : MonoBehaviour {
     public GameObject particles;
     public Vector3 destinationPos = new Vector3(0, 8.4f, 5);
     public Vector3 destinationAngle = new Vector3(310, 180, 0);
+    public string targetSceneName;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
@@ -34,7 +35,7 @@ public class OnTriggerWin : MonoBehaviour {
                     {
                         overlay.intensity = - Mathf.Lerp(0, j * 7, j.ExpoIn());
                         if (j >= 1) {
-                            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                            SceneManager.LoadScene(targetSceneName);
                         }
                     });
                 }

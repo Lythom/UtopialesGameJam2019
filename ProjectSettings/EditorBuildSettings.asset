@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/GD/V1.2_Sam.unity
     guid: 24d1b42cd80fe204f9aee4d005717e06
   - enabled: 1
     path: Assets/GD/V1.4_lvl1.unity
-    guid: f1390253e5b4deb40a8abde9734d7ae7
+    guid: 7bebd8e6e9d12be4dacd03167bbf2980
   - enabled: 1
     path: Assets/GD/V1.4_lvl2.unity
     guid: 55128ba4b14a33249adf241c4c39fbe0
