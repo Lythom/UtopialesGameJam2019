@@ -1,7 +1,7 @@
 # FishballRider
-FishballRider, a game developed with fun and less than 48 hours during the (Utopiales Game Jam 2019)[https://itch.io/jam/utopiales-game-jam].
+FishballRider, a game developed with fun and less than 48 hours during the [Utopiales Game Jam 2019](https://itch.io/jam/utopiales-game-jam).
 
-Please download releases (for Windows only) on our itch.io game page : [https://zerogium.itch.io/fishball-rider]
+Please download releases (for Windows only) on our itch.io game page : https://zerogium.itch.io/fishball-rider
 
 All the code and assets are originals and in the Public Domain: feel free to fork and submit new levels, new sounds, new gameplay...
 
