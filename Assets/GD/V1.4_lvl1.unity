@@ -5538,6 +5538,11 @@ PrefabInstance:
       propertyPath: targetSceneName
       value: V1.4_lvl2
       objectReference: {fileID: 0}
+    - target: {fileID: 7636288947721836582, guid: b3cd012d191ad194f8cc6c6edf73a5d3,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cd012d191ad194f8cc6c6edf73a5d3, type: 3}
 --- !u!1001 &1902221418
@@ -5610,7 +5615,7 @@ PrefabInstance:
     - target: {fileID: 5389643792499260570, guid: 3aaeca23fb18a5342901c97c812bf4a1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5389643792499260570, guid: 3aaeca23fb18a5342901c97c812bf4a1,
         type: 3}
